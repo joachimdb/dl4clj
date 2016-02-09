@@ -49,7 +49,7 @@ A DataSetIterator for use in the graves-lstm-char-modelling-example
                             (slurp (clojure.java.io/as-file path))))))
 
 (defn index-map 
-  "Utility function to make an map from elements in a collection to indices".
+  "Utility function to make an map from elements in a collection to indices"
   [col]
   (zipmap col (range)))
 

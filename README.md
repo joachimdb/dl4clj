@@ -4,7 +4,7 @@ For now, just a port of [Alex Black's RNN example in deeplearning4j](https://git
 
 ## Usage
 
-Repl only.
+Repl only
 
 Load the file `src/dl4clj/examples/rnn/graves_lstm_char_modelling_example.clj` and look at the commented example code at the bottom.
 
