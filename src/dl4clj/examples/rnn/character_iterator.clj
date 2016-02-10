@@ -75,7 +75,7 @@ A DataSetIterator for use in the graves-lstm-char-modelling-example
     (let [file-characters ^"[C" (file-characters path 
                                                  (into #{} (get opts :valid-characters +default-character-set+))
                                                  (* max-segments chars-per-segment))
-          max-start-idx (- (count file-characters) chars-per-segment)
+          max-start-idx (dec (- (count file-characters) chars-per-segment))
           random-start-idx (fn []
                              (loop [idx (rand-int max-start-idx)
                                     scan-count 0]
@@ -109,7 +109,7 @@ A DataSetIterator for use in the graves-lstm-char-modelling-example
                   (let [next-char-idx (get char-to-idx-map (aget file-characters j))]
                     (.putScalar input (int-array [i curr-char-idx c]) 1.0)
                     (.putScalar labels (int-array [i next-char-idx c]) 1.0)
-                    (when (<= j end-idx) (recur (inc c) (inc j) next-char-idx))))))
+                    (when (< j end-idx) (recur (inc c) (inc j) next-char-idx))))))
             (swap! segment-count #(+ % n-segments))
             (DataSet. input labels)))
         (hasNext [this]
